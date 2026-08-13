@@ -148,7 +148,7 @@ void gpsTool::on_comBox_GPSOnOff_currentTextChanged(const QString &arg1)
     libqhyccd->SetQHYCCDGPSLedCalMode(camhandle, 1);
 
     uint32_t vPosA, vPosB;
-    if(ix.CamID.contains("QHY9A_992"))
+    if(ix.CamID.contains("QHY9A_992") || ix.CamID.contains("QHY992_"))
     {
         if(ix.Bits == 8)
         {
@@ -173,8 +173,8 @@ void gpsTool::on_comBox_GPSOnOff_currentTextChanged(const QString &arg1)
         ui->spBox_GPSStart7->setValue(0);
         ui->spBox_GPSStart6->setValue(0);
         ui->spBox_GPSStart5->setValue(0);
-        ui->spBox_GPSStart4->setValue(0);
-        ui->spBox_GPSStart3->setValue(vPosB / 100);
+        ui->spBox_GPSStart4->setValue(vPosB / 1000);
+        ui->spBox_GPSStart3->setValue((vPosB % 1000) / 100);
         ui->spBox_GPSStart2->setValue((vPosB % 100) / 10);
         ui->spBox_GPSStart1->setValue(vPosB % 10);
         ui->spBox_GPSStart8->blockSignals(false);
